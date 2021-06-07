@@ -26,14 +26,14 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/gly/addpage">
+                    <a href="<%=request.getContextPath()%>/admin/addpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加管理员</a>
 
                     <b class="arrow"></b>							</li>
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/gly/listpage">
+                    <a href="<%= request.getContextPath()%>/admin/listpage?start=0&size=4">
                         <i class="menu-icon fa fa-caret-right"></i>
                         管理员列表</a>
 
@@ -209,21 +209,6 @@
                         <i class="menu-icon fa fa-caret-right"></i>
                         课程表浏览</a>
                     <b class="arrow"></b>							</li>
-            </ul>
-        </li>
-        <li class="">
-            <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-pencil-square-o"></i>
-                <span class="menu-text"> 成绩管理 </span>
-
-                <b class="arrow fa fa-angle-down"></b>						</a>
-
-            <b class="arrow"></b>
-
-            <ul class="submenu">
-
-
-
             </ul>
         </li>
         <li class="">

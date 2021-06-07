@@ -125,3 +125,117 @@
 2021-05-26 23:13:01,865 4591   [           main] DEBUG e.DataSourceTransactionManager  - Initiating transaction commit
 2021-05-26 23:13:01,865 4591   [           main] DEBUG e.DataSourceTransactionManager  - Committing JDBC transaction on Connection [com.mysql.jdbc.JDBC4Connection@662706a7]
 2021-05-26 23:13:01,869 4595   [           main] DEBUG e.DataSourceTransactionManager  - Releasing JDBC Connection [com.mysql.jdbc.JDBC4Connection@662706a7] after transaction
+2021-06-06 00:00:35,144 0      [           main] DEBUG ClassPathXmlApplicationContext  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@47f37ef1
+2021-06-06 00:00:35,678 534    [           main] DEBUG ClassPathBeanDefinitionScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\service\AdminService.class]
+2021-06-06 00:00:35,680 536    [           main] DEBUG ClassPathBeanDefinitionScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\service\StudentService.class]
+2021-06-06 00:00:35,681 537    [           main] DEBUG ClassPathBeanDefinitionScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\service\TeacherService.class]
+2021-06-06 00:00:35,754 610    [           main] DEBUG ry.xml.XmlBeanDefinitionReader  - Loaded 17 bean definitions from class path resource [applicationContext.xml]
+2021-06-06 00:00:35,815 671    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2021-06-06 00:00:35,942 798    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2021-06-06 00:00:36,025 881    [           main] DEBUG ache.ibatis.logging.LogFactory  - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-06-06 00:00:36,033 889    [           main] DEBUG .mapper.ClassPathMapperScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\dao\AdminMapper.class]
+2021-06-06 00:00:36,034 890    [           main] DEBUG .mapper.ClassPathMapperScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\dao\StudentMapper.class]
+2021-06-06 00:00:36,035 891    [           main] DEBUG .mapper.ClassPathMapperScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\dao\TeacherMapper.class]
+2021-06-06 00:00:36,036 892    [           main] DEBUG .mapper.ClassPathMapperScanner  - Creating MapperFactoryBean with name 'adminMapper' and 'com.dao.AdminMapper' mapperInterface
+2021-06-06 00:00:36,040 896    [           main] DEBUG .mapper.ClassPathMapperScanner  - Enabling autowire by type for MapperFactoryBean with name 'adminMapper'.
+2021-06-06 00:00:36,040 896    [           main] DEBUG .mapper.ClassPathMapperScanner  - Creating MapperFactoryBean with name 'studentMapper' and 'com.dao.StudentMapper' mapperInterface
+2021-06-06 00:00:36,040 896    [           main] DEBUG .mapper.ClassPathMapperScanner  - Enabling autowire by type for MapperFactoryBean with name 'studentMapper'.
+2021-06-06 00:00:36,040 896    [           main] DEBUG .mapper.ClassPathMapperScanner  - Creating MapperFactoryBean with name 'teacherMapper' and 'com.dao.TeacherMapper' mapperInterface
+2021-06-06 00:00:36,040 896    [           main] DEBUG .mapper.ClassPathMapperScanner  - Enabling autowire by type for MapperFactoryBean with name 'teacherMapper'.
+2021-06-06 00:00:36,052 908    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2021-06-06 00:00:36,055 911    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2021-06-06 00:00:36,056 912    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory'
+2021-06-06 00:00:36,060 916    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2021-06-06 00:00:36,063 919    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2021-06-06 00:00:36,069 925    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+2021-06-06 00:00:36,134 990    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'dataSource'
+2021-06-06 00:00:36,169 1025   [           main] DEBUG source.DriverManagerDataSource  - Loaded JDBC driver: com.mysql.jdbc.Driver
+2021-06-06 00:00:36,170 1026   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2021-06-06 00:00:36,175 1031   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+2021-06-06 00:00:36,213 1069   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.mybatis.spring.SqlSessionFactoryBean#0'
+2021-06-06 00:00:36,256 1112   [           main] DEBUG s.spring.SqlSessionFactoryBean  - Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-06-06 00:00:36,647 1503   [           main] DEBUG s.spring.SqlSessionFactoryBean  - Parsed mapper file: 'file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\mapper\AdminMapper.xml]'
+2021-06-06 00:00:36,668 1524   [           main] DEBUG s.spring.SqlSessionFactoryBean  - Parsed mapper file: 'file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\mapper\StudentMapper.xml]'
+2021-06-06 00:00:36,684 1540   [           main] DEBUG s.spring.SqlSessionFactoryBean  - Parsed mapper file: 'file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\mapper\TeacherMapper.xml]'
+2021-06-06 00:00:36,694 1550   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'adminService'
+2021-06-06 00:00:36,727 1583   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'adminMapper'
+2021-06-06 00:00:36,928 1784   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+2021-06-06 00:00:37,001 1857   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'studentService'
+2021-06-06 00:00:37,003 1859   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'studentMapper'
+2021-06-06 00:00:37,022 1878   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'teacherService'
+2021-06-06 00:00:37,024 1880   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'teacherMapper'
+2021-06-06 00:00:37,043 1899   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'transactionManager'
+2021-06-06 00:00:37,103 1959   [           main] DEBUG e.DataSourceTransactionManager  - Creating new transaction with name [com.service.AdminService.getAdminByYhm]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2021-06-06 00:00:37,104 1960   [           main] DEBUG source.DriverManagerDataSource  - Creating new JDBC DriverManager Connection to [jdbc:mysql:///jspxyxx]
+2021-06-06 00:00:39,159 4015   [           main] DEBUG e.DataSourceTransactionManager  - Acquired Connection [com.mysql.jdbc.JDBC4Connection@4816278d] for JDBC transaction
+2021-06-06 00:00:39,168 4024   [           main] DEBUG e.DataSourceTransactionManager  - Switching JDBC Connection [com.mysql.jdbc.JDBC4Connection@4816278d] to manual commit
+2021-06-06 00:00:39,214 4070   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
+2021-06-06 00:00:39,225 4081   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:00:39,244 4100   [           main] DEBUG ction.SpringManagedTransaction  - JDBC Connection [com.mysql.jdbc.JDBC4Connection@4816278d] will be managed by Spring
+2021-06-06 00:00:39,257 4113   [           main] DEBUG .dao.AdminMapper.getAdminByYhm  - ==>  Preparing: select * from gly where (yhm = ?) 
+2021-06-06 00:00:39,299 4155   [           main] DEBUG .dao.AdminMapper.getAdminByYhm  - ==> Parameters: haha(String)
+2021-06-06 00:00:39,428 4284   [           main] DEBUG .dao.AdminMapper.getAdminByYhm  - <==      Total: 0
+2021-06-06 00:00:39,430 4286   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:00:39,431 4287   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:00:39,432 4288   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:00:39,434 4290   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:00:39,434 4290   [           main] DEBUG e.DataSourceTransactionManager  - Initiating transaction commit
+2021-06-06 00:00:39,434 4290   [           main] DEBUG e.DataSourceTransactionManager  - Committing JDBC transaction on Connection [com.mysql.jdbc.JDBC4Connection@4816278d]
+2021-06-06 00:00:39,438 4294   [           main] DEBUG e.DataSourceTransactionManager  - Releasing JDBC Connection [com.mysql.jdbc.JDBC4Connection@4816278d] after transaction
+2021-06-06 00:03:33,157 0      [           main] DEBUG ClassPathXmlApplicationContext  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@47f37ef1
+2021-06-06 00:03:33,707 550    [           main] DEBUG ClassPathBeanDefinitionScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\service\AdminService.class]
+2021-06-06 00:03:33,708 551    [           main] DEBUG ClassPathBeanDefinitionScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\service\StudentService.class]
+2021-06-06 00:03:33,710 553    [           main] DEBUG ClassPathBeanDefinitionScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\service\TeacherService.class]
+2021-06-06 00:03:33,784 627    [           main] DEBUG ry.xml.XmlBeanDefinitionReader  - Loaded 17 bean definitions from class path resource [applicationContext.xml]
+2021-06-06 00:03:33,859 702    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2021-06-06 00:03:34,003 846    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2021-06-06 00:03:34,091 934    [           main] DEBUG ache.ibatis.logging.LogFactory  - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-06-06 00:03:34,098 941    [           main] DEBUG .mapper.ClassPathMapperScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\dao\AdminMapper.class]
+2021-06-06 00:03:34,099 942    [           main] DEBUG .mapper.ClassPathMapperScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\dao\StudentMapper.class]
+2021-06-06 00:03:34,100 943    [           main] DEBUG .mapper.ClassPathMapperScanner  - Identified candidate component class: file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\com\dao\TeacherMapper.class]
+2021-06-06 00:03:34,102 945    [           main] DEBUG .mapper.ClassPathMapperScanner  - Creating MapperFactoryBean with name 'adminMapper' and 'com.dao.AdminMapper' mapperInterface
+2021-06-06 00:03:34,106 949    [           main] DEBUG .mapper.ClassPathMapperScanner  - Enabling autowire by type for MapperFactoryBean with name 'adminMapper'.
+2021-06-06 00:03:34,107 950    [           main] DEBUG .mapper.ClassPathMapperScanner  - Creating MapperFactoryBean with name 'studentMapper' and 'com.dao.StudentMapper' mapperInterface
+2021-06-06 00:03:34,107 950    [           main] DEBUG .mapper.ClassPathMapperScanner  - Enabling autowire by type for MapperFactoryBean with name 'studentMapper'.
+2021-06-06 00:03:34,107 950    [           main] DEBUG .mapper.ClassPathMapperScanner  - Creating MapperFactoryBean with name 'teacherMapper' and 'com.dao.TeacherMapper' mapperInterface
+2021-06-06 00:03:34,107 950    [           main] DEBUG .mapper.ClassPathMapperScanner  - Enabling autowire by type for MapperFactoryBean with name 'teacherMapper'.
+2021-06-06 00:03:34,121 964    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2021-06-06 00:03:34,125 968    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2021-06-06 00:03:34,126 969    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory'
+2021-06-06 00:03:34,129 972    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2021-06-06 00:03:34,131 974    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2021-06-06 00:03:34,137 980    [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+2021-06-06 00:03:34,198 1041   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'dataSource'
+2021-06-06 00:03:34,229 1072   [           main] DEBUG source.DriverManagerDataSource  - Loaded JDBC driver: com.mysql.jdbc.Driver
+2021-06-06 00:03:34,230 1073   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2021-06-06 00:03:34,234 1077   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+2021-06-06 00:03:34,273 1116   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.mybatis.spring.SqlSessionFactoryBean#0'
+2021-06-06 00:03:34,300 1143   [           main] DEBUG s.spring.SqlSessionFactoryBean  - Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-06-06 00:03:34,596 1439   [           main] DEBUG s.spring.SqlSessionFactoryBean  - Parsed mapper file: 'file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\mapper\AdminMapper.xml]'
+2021-06-06 00:03:34,619 1462   [           main] DEBUG s.spring.SqlSessionFactoryBean  - Parsed mapper file: 'file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\mapper\StudentMapper.xml]'
+2021-06-06 00:03:34,637 1480   [           main] DEBUG s.spring.SqlSessionFactoryBean  - Parsed mapper file: 'file [C:\Users\Administrator\Desktop\ssm_xyxx\xyxx\target\classes\mapper\TeacherMapper.xml]'
+2021-06-06 00:03:34,645 1488   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'adminService'
+2021-06-06 00:03:34,671 1514   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'adminMapper'
+2021-06-06 00:03:34,851 1694   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+2021-06-06 00:03:34,939 1782   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'studentService'
+2021-06-06 00:03:34,940 1783   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'studentMapper'
+2021-06-06 00:03:34,963 1806   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'teacherService'
+2021-06-06 00:03:34,965 1808   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'teacherMapper'
+2021-06-06 00:03:34,988 1831   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'transactionManager'
+2021-06-06 00:03:35,062 1905   [           main] DEBUG e.DataSourceTransactionManager  - Creating new transaction with name [com.service.AdminService.getAdminByYhm]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2021-06-06 00:03:35,063 1906   [           main] DEBUG source.DriverManagerDataSource  - Creating new JDBC DriverManager Connection to [jdbc:mysql:///jspxyxx]
+2021-06-06 00:03:37,640 4483   [           main] DEBUG e.DataSourceTransactionManager  - Acquired Connection [com.mysql.jdbc.JDBC4Connection@4816278d] for JDBC transaction
+2021-06-06 00:03:37,645 4488   [           main] DEBUG e.DataSourceTransactionManager  - Switching JDBC Connection [com.mysql.jdbc.JDBC4Connection@4816278d] to manual commit
+2021-06-06 00:03:37,699 4542   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
+2021-06-06 00:03:37,711 4554   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:03:37,729 4572   [           main] DEBUG ction.SpringManagedTransaction  - JDBC Connection [com.mysql.jdbc.JDBC4Connection@4816278d] will be managed by Spring
+2021-06-06 00:03:37,742 4585   [           main] DEBUG .dao.AdminMapper.getAdminByYhm  - ==>  Preparing: select * from gly where (yhm = ?) 
+2021-06-06 00:03:37,786 4629   [           main] DEBUG .dao.AdminMapper.getAdminByYhm  - ==> Parameters: haha(String)
+2021-06-06 00:03:37,802 4645   [           main] DEBUG .dao.AdminMapper.getAdminByYhm  - <==      Total: 0
+2021-06-06 00:03:37,804 4647   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:03:37,805 4648   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:03:37,805 4648   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:03:37,806 4649   [           main] DEBUG mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@119cbf96]
+2021-06-06 00:03:37,806 4649   [           main] DEBUG e.DataSourceTransactionManager  - Initiating transaction commit
+2021-06-06 00:03:37,806 4649   [           main] DEBUG e.DataSourceTransactionManager  - Committing JDBC transaction on Connection [com.mysql.jdbc.JDBC4Connection@4816278d]
+2021-06-06 00:03:37,809 4652   [           main] DEBUG e.DataSourceTransactionManager  - Releasing JDBC Connection [com.mysql.jdbc.JDBC4Connection@4816278d] after transaction

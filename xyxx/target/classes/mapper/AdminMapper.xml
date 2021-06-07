@@ -6,13 +6,42 @@
 
 <mapper namespace="com.dao.AdminMapper">
     <!--查找所有管理员-->
-    <select id="getAdmins" resultType="com.pojo.Admin">
-        select * from gly
+<!--    <select id="getAdmins" resultType="com.pojo.Admin">-->
+<!--        select * from gly-->
+<!--    </select>-->
+    <!--添加分页功能-->
+    <select id="getAdmins" resultType="com.pojo.Admin" parameterType="map">
+        select * from gly limit #{startIndex}, #{pageSize}
     </select>
+
 
     <!--根据用户名yhm查找管理员-->
     <select id="getAdminByYhm" resultType="com.pojo.Admin" parameterType="string">
         select * from gly where (yhm = #{yhm})
     </select>
+
+    <!--根据id值查询管理员-->
+    <select id="getAdminById" resultType="com.pojo.Admin" parameterType="int">
+        select * from gly where (glyid = #{glyid})
+    </select>
+
+
+    <!--添加管理员-->
+    <insert id="addAdmin" parameterType="com.pojo.Admin">
+        insert into gly (yhm,mm,xm) values(#{yhm},#{mm},#{xm})
+    </insert>
+
+
+    <!--根据id删除管理员-->
+    <delete id="delAdmin" parameterType="int">
+        delete from gly where (glyid = #{glyid})
+    </delete>
+
+
+    <!--更新管理员-->
+    <update id="updateAdmin" parameterType="com.pojo.Admin">
+        update gly set yhm = #{yhm},mm = #{mm},xm = #{xm} where (glyid = #{glyid})
+    </update>
+
 
 </mapper>

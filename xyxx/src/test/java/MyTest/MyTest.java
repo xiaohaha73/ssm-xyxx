@@ -19,7 +19,7 @@ public class MyTest {
 //            System.out.println(admin);
 //        }
 
-        Admin admin = adminService.getAdminByYhm("admin");
+        Admin admin = adminService.getAdminByYhm("haha");
         System.out.println(admin);
 
     }

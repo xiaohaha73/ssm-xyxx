@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // 教师模块控制器
 @Controller
 @RequestMapping("/teacher")
-public class Teacher {
+public class TeacherController {
 
     @RequestMapping("/index")
     public String index() {
