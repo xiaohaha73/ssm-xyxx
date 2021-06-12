@@ -39,6 +39,7 @@
 
             <!--配置哪些资源排除拦截操作,注意这里一定要写，要把登陆界面排除在外-->
             <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/assets/**"/>
             <mvc:exclude-mapping path="/logincheck"/>
             <!--配置对应的拦截器-->
             <bean class="com.Interceptor.PrivilegeInterceptor"/>
@@ -51,6 +52,7 @@
 
             <!--配置哪些资源排除拦截操作,注意这里一定要写，要把登陆界面排除在外-->
             <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/assets/**"/>
             <mvc:exclude-mapping path="/logincheck"/>
             <!--配置对应的拦截器-->
             <bean class="com.Interceptor.AdminInterceptor"/>
@@ -63,6 +65,7 @@
 
             <!--配置哪些资源排除拦截操作,注意这里一定要写，要把登陆界面排除在外-->
             <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/assets/**"/>
             <mvc:exclude-mapping path="/logincheck"/>
             <!--配置对应的拦截器-->
             <bean class="com.Interceptor.TeacherInterceptor"/>
@@ -75,6 +78,7 @@
 
             <!--配置哪些资源排除拦截操作,注意这里一定要写，要把登陆界面排除在外-->
             <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/assets/**"/>
             <mvc:exclude-mapping path="/logincheck"/>
             <!--配置对应的拦截器-->
             <bean class="com.Interceptor.StudentInterceptor"/>

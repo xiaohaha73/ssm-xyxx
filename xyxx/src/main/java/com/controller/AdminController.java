@@ -1,6 +1,8 @@
 package com.controller;
 
+import com.pojo.Teacher;
 import com.service.AdminService;
+import com.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private TeacherService teacherService;
 
     // 加载管理员首页
     @RequestMapping("/index")
@@ -118,7 +122,7 @@ public class AdminController {
     }
 
 
-    // 提交修改
+    // 提交管理员修改
     @PostMapping("/update")
     public String updateAdmin(HttpServletRequest request) {
 
@@ -144,7 +148,7 @@ public class AdminController {
     }
 
 
-    // 加载详情页面
+    // 加载管理员详情页面
     @RequestMapping("/detail")
     public String detail(HttpServletRequest request, Model model) {
         int glyid = Integer.parseInt(request.getParameter("keyid"));
@@ -160,6 +164,112 @@ public class AdminController {
 
         return "admin/glydetail";
     }
+
+
+    // 添加老师页面
+    @RequestMapping("/addteacher")
+    public String addteacher() {
+        return "/admin/jiaoshi/jiaoshiadd";
+    }
+
+    // 添加教师post请求
+    @PostMapping("/addtea")
+    public String addTea(HttpServletRequest request, Teacher teacher) {
+        System.out.println(teacher);
+        // String yhm = request.getParameter("yhm");//用户名
+
+        // 查询是否存在该教师
+        Teacher oldTeacher = teacherService.getTeacherByYhm(teacher.getYhm());
+        if (oldTeacher != null) {
+            request.setAttribute("msg", "<script>alert('该用户已经存在');</script>");
+            return "redirect:/admin/addteacher";
+        }
+
+        // 存储老师
+        int ret = teacherService.addTeacher(teacher);
+        if (ret < 0 ) {
+            request.setAttribute("msg", "<script>alert('添加失败');</script>");
+            return "redirect:/admin/addteacher";
+        }
+
+        request.setAttribute("msg", "<script>alert('添加成功');</script>");
+        return "redirect:/admin/teacherlist";
+    }
+
+    // 教师列表
+    @RequestMapping("/teacherlist")
+    public String teacherlist(Model model) {
+        // 查询所有教师
+        List<Teacher> teachers = teacherService.getTeachers();
+        model.addAttribute("list",teachers);
+        return "/admin/jiaoshi/jiaoshilist";
+    }
+
+    // 删除教师操作
+    @RequestMapping("/delteacher")
+    public String delTeacher(HttpServletRequest request) {
+        int jsid = Integer.parseInt(request.getParameter("keyid"));
+        // 调用service层
+        int ret = teacherService.delTeacher(jsid);
+        if (ret > 0 ) {
+            // 删除成功
+            request.setAttribute("msg", "<script>alert('删除成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('删除失败');</script>");
+        }
+        return "redirect:/admin/teacherlist";
+    }
+
+
+    // 修改教师页面
+    @RequestMapping("/updateteapage")
+    public String updateTeaPage(HttpServletRequest request, Model model) {
+        // 获取传递过来的教师id
+        int jsid = Integer.parseInt(request.getParameter("keyid"));
+        // 查询出教师的信息
+        Teacher teacher = teacherService.getTeacherById(jsid);
+        model.addAttribute("jsid",teacher.getJsid());
+        model.addAttribute("yhm",teacher.getYhm());
+        model.addAttribute("xm",teacher.getXm());
+        model.addAttribute("mm",teacher.getYhm());
+        model.addAttribute("lxdh",teacher.getLxdh());
+        model.addAttribute("lxdz",teacher.getLxdz());
+        model.addAttribute("xy",teacher.getXy());
+        return "/admin/jiaoshi/editpage";
+    }
+
+    // 更新教师
+    @PostMapping("/updateteacher")
+    public String updateTeacher(Teacher teacher,HttpServletRequest request) {
+        // System.out.println(teacher);
+        int ret = teacherService.updateTeacher(teacher);
+        if (ret > 0) {
+            // 更新成功
+            request.setAttribute("msg", "<script>alert('更新成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('删除成功');</script>");
+        }
+
+        return "redirect:/admin/teacherlist";
+    }
+
+    // 展示教师详细信息的页面
+    @RequestMapping("/teacherdetail")
+    public String teaDetail(Model model,HttpServletRequest request) {
+        // 获取传递过来的教师id
+        int jsid = Integer.parseInt(request.getParameter("keyid"));
+        // 查询出教师的信息
+        Teacher teacher = teacherService.getTeacherById(jsid);
+        model.addAttribute("jsid",teacher.getJsid());
+        model.addAttribute("yhm",teacher.getYhm());
+        model.addAttribute("xm",teacher.getXm());
+        model.addAttribute("mm",teacher.getYhm());
+        model.addAttribute("lxdh",teacher.getLxdh());
+        model.addAttribute("lxdz",teacher.getLxdz());
+        model.addAttribute("xy",teacher.getXy());
+        return "/admin/jiaoshi/jiaoshidetail";
+    }
+
 
 
 }

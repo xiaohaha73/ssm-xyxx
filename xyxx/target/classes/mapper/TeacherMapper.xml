@@ -5,14 +5,35 @@
 
 
 <mapper namespace="com.dao.TeacherMapper">
-    <!--查找所有学生-->
+    <!--查找所有老师-->
     <select id="getTeachers" resultType="com.pojo.Teacher">
         select * from jiaoshi
     </select>
 
-    <!--根据用户名yhm查找学生-->
+    <!--根据用户名yhm查找老师-->
     <select id="getTeacherByYhm" resultType="com.pojo.Teacher" parameterType="string">
         select * from jiaoshi where (yhm = #{yhm})
     </select>
+
+    <!--根据教师id查询教师-->
+    <select id="getTeacherById" resultType="com.pojo.Teacher" parameterType="int">
+        select * from jiaoshi where (jsid = #{jsid})
+    </select>
+
+
+    <!--添加老师-->
+    <insert id="addTeacher" parameterType="com.pojo.Teacher">
+        insert into jiaoshi (yhm,mm,xm,lxdh,lxdz,xy) values (#{yhm},#{mm},#{xm},#{lxdh},#{lxdz},#{xy})
+    </insert>
+
+    <!--删除老师-->
+    <delete id="delTeacher" parameterType="int">
+        delete from jiaoshi where (jsid = #{jsid})
+    </delete>
+
+    <!--更新老师-->
+    <update id="updateTeacher" parameterType="com.pojo.Teacher">
+        update jiaoshi set yhm = #{yhm},mm = #{mm},xm = #{xm},lxdh = #{lxdh},lxdz = #{lxdz},xy = #{xy} where (jsid = #{jsid})
+    </update>
 
 </mapper>

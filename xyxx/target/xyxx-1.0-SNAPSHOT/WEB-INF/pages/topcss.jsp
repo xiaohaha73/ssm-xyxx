@@ -22,14 +22,14 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/ace-fonts.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/ace.min.css" id="main-ace-style" />
 <!--[if lte IE 9]>
-<link rel="stylesheet" href="assets/css/ace-part2.min.css" />
+<link rel="stylesheet" href="/assets/css/ace-part2.min.css" />
 <![endif]-->
 <!--[if lte IE 9]>
-<link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+<link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
 <![endif]-->
 <script src="<%=request.getContextPath()%>/assets/js/ace-extra.min.js"></script>
 
 <!--[if lte IE 8]>
-<script src="assets/js/html5shiv.min.js"></script>
-<script src="assets/js/respond.min.js"></script>
+<script src="/assets/js/html5shiv.min.js"></script>
+<script src="/assets/js/respond.min.js"></script>
 <![endif]-->

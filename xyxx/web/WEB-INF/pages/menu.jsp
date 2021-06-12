@@ -52,14 +52,14 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/jiaoshi/addpage">
+                    <a href="<%=request.getContextPath()%>/admin/addteacher">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加教师</a>
 
                     <b class="arrow"></b>							</li>
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/jiaoshi/listpage">
+                    <a href="<%=request.getContextPath()%>/admin/teacherlist">
                         <i class="menu-icon fa fa-caret-right"></i>
                         教师列表</a>
 
