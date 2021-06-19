@@ -1,9 +1,8 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2021/6/12
-  Time: 23:10
+  Date: 2021/6/19
+  Time: 23:08
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,14 +11,26 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <jsp:include page="../../topcss.jsp"/>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>教师详细信息</title></head>
+    <title>修改班级</title>
+</head>
 
 <body class="no-skin">
 <!-- #section:basics/navbar.layout -->
 <jsp:include page="../../header.jsp"/>
 <script language="javascript">
+    function checkDo(){
+        if(form.bj.value==""){
+            alert("班级不能为空");
+            return false;
+            form.bj.focus();
+        }
 
+
+        form.action="<%=request.getContextPath()%>/admin/editbanji";
+        form.submit();
+    }
 </script>
 
 <!-- /section:basics/navbar.layout -->
@@ -34,7 +45,7 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    查看教师信息页面					</li>
+                    修改班级信息页面					</li>
 
             </ul><!-- /.breadcrumb -->
 
@@ -49,48 +60,39 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <form class="form-horizontal" role="form" name="form" action="<%=request.getContextPath()%>/jiaoshi/selectall">
+                        <form class="form-horizontal" role="form" method="post"  name="form" action="<%=request.getContextPath()%>/admin/editbanji">
                             <!-- #section:elements.form -->
 
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
 
                                 <tbody>
 
+                                <tr>
+
+                                    <td align="right" valign="middle"><strong>班级</strong></td>
+
+                                    <td><input type="text"  class="col-xs-10 col-sm-5" placeholder="请输入班级" id="bj" name="bj" value="${bj}" required></td>
 
 
-                                <tr>
-                                    <td  align="right" valign="middle"><strong>用户名</strong></td>
-                                    <td>${yhm}</td>
                                 </tr>
-                                <tr>
-                                    <td  align="right" valign="middle"><strong>密码</strong></td>
-                                    <td>${mm}</td>
-                                </tr>
-                                <tr>
-                                    <td  align="right" valign="middle"><strong>姓名</strong></td>
-                                    <td>${xm}</td>
-                                </tr>
-                                <tr>
-                                    <td  align="right" valign="middle"><strong>联系电话</strong></td>
-                                    <td>${lxdh}</td>
-                                </tr>
-                                <tr>
-                                    <td  align="right" valign="middle"><strong>联系地址</strong></td>
-                                    <td>${lxdz}</td>
-                                </tr>
-                                <tr>
-                                    <td  align="right" valign="middle"><strong>学院</strong></td>
-                                    <td>${xy}</td>
-                                </tr>
+
+
+                                <input type="hidden" name="bjid" value="${bjid}">
 
 
                                 <tr>
                                     <td class="" align="right" valign="middle"></td>
-                                    <input type="hidden" name="jsid" value="${jsid}">									<td>
-                                    <button class="btn btn-info" type="button" onClick="window.history.go(-1);">
-                                        <i class="ace-icon fa fa-check bigger-110"></i>返回	</button>
-                                </td>
+
+                                    <td>
+                                        <button class="btn btn-info" type="submit">
+                                            <i class="ace-icon fa fa-check bigger-110"></i>立即提交</button>
+
+                                        <button class="btn" type="reset">
+                                            <i class="ace-icon fa fa-undo bigger-110"></i>重新输入</button>
+                                    </td>
+
                                 </tr>
+
                                 </tbody>
                             </table>
                         </form>
@@ -100,7 +102,7 @@
         </div><!-- /.page-content -->
     </div><!-- /.main-content -->
     <jsp:include page="../../footer.jsp"/>
-
     ${msg}
+
 </body>
 </html>

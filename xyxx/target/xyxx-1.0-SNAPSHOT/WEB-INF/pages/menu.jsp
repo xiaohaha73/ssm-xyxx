@@ -78,14 +78,14 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/banji/addpage">
+                    <a href="<%=request.getContextPath()%>/admin/addbanji">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加班级</a>
 
                     <b class="arrow"></b>							</li>
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/banji/listpage">
+                    <a href="<%=request.getContextPath()%>/admin/banjilist">
                         <i class="menu-icon fa fa-caret-right"></i>
                         班级列表</a>
 

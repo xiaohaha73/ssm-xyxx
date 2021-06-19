@@ -1,7 +1,9 @@
 package com.controller;
 
+import com.pojo.Banji;
 import com.pojo.Teacher;
 import com.service.AdminService;
+import com.service.BanjiService;
 import com.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,10 @@ public class AdminController {
     private AdminService adminService;
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private BanjiService banjiService;
+
+
 
     // 加载管理员首页
     @RequestMapping("/index")
@@ -270,6 +276,89 @@ public class AdminController {
         return "/admin/jiaoshi/jiaoshidetail";
     }
 
+
+    // 添加班级页面
+    @RequestMapping("/addbanji")
+    public String addbanjiPage() {
+        return "/admin/banji/addbanji";
+    }
+
+
+    // 展示班级列表
+    @RequestMapping("/banjilist")
+    public String banjiList (Model model) {
+        // 获取所有的班级数据
+        List<Banji> lists = banjiService.getBanjis();
+        model.addAttribute("list",lists);
+        return "/admin/banji/banjis";
+    }
+
+    // 添夹班级请求
+    @PostMapping("/addbanji")
+    public String addbanji (Banji banji,HttpServletRequest request) {
+        // 调用添加班级service
+        int ret = banjiService.addBanji(banji);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('添加成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('添加失败');</script>");
+        }
+
+        return "redirect:/admin/banjilist";
+    }
+
+
+    // 修改班级界面
+    @RequestMapping("/editbanji")
+    public String editbanjiPage (HttpServletRequest request,Model model) {
+
+        int bjid = Integer.parseInt(request.getParameter("keyid"));
+        // 查询这个班级的信息
+        Banji banji = banjiService.getBanjiByid(bjid);
+        model.addAttribute("bjid",banji.getBjid());
+        model.addAttribute("bj",banji.getBj());
+        return "/admin/banji/editbanji";
+    }
+
+    // 提交班级修改的接口
+    @PostMapping("/editbanji")
+    public String editbanji (Banji banji,HttpServletRequest request) {
+        int ret = banjiService.updateBanji(banji);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('修改成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('修改失败');</script>");
+        }
+        return "redirect:/admin/banjilist";
+    }
+
+    // 展示班级详情页面
+    @RequestMapping("/banjidetail")
+    public String banjiDetail (HttpServletRequest request, Model model) {
+        int bjid = Integer.parseInt(request.getParameter("keyid"));
+        // 查询这个班级的信息
+        Banji banji = banjiService.getBanjiByid(bjid);
+        model.addAttribute("bjid",banji.getBjid());
+        model.addAttribute("bj",banji.getBj());
+        return "/admin/banji/banjidetail";
+    }
+
+    // 删除班级
+    @RequestMapping("/delbanji")
+    public String delBanji (HttpServletRequest request, Model model) {
+        int bjid = Integer.parseInt(request.getParameter("keyid"));
+        int ret = banjiService.delBanji(bjid);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('删除成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('删除失败');</script>");
+        }
+
+        return "redirect:/admin/banjilist";
+    }
 
 
 }

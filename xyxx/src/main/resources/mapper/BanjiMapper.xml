@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.BanjiMapper">
+
+    <!--查询所有班级-->
+    <select id="getBanjis" resultType="com.pojo.Banji">
+        select * from banji
+    </select>
+
+    <!--根据id查询班级-->
+    <select id="getBanjiByid" parameterType="int" resultType="com.pojo.Banji">
+        select * from banji where (bjid = #{bjid})
+    </select>
+
+    <!--添加班级-->
+    <insert id="addBanji" parameterType="com.pojo.Banji">
+        insert into banji (bj) value (#{bj})
+    </insert>
+
+    <!--根据id删除班级-->
+    <delete id="delBanji" parameterType="int">
+        delete from banji where (bjid = #{bjid})
+    </delete>
+
+    <!--更新班级-->
+    <update id="updateBanji" parameterType="com.pojo.Banji">
+        update banji set bj = #{bj} where (bjid = #{bjid})
+    </update>
+
+</mapper>
