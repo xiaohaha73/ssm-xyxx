@@ -16,5 +16,5 @@ public class Student {
     private String xy; // 学院
     private String nl; // 年龄
     private String dh; // 电话
-    private String dj; // 班级
+    private String bj; // 班级
 }

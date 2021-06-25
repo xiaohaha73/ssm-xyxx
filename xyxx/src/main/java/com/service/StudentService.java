@@ -25,4 +25,25 @@ public class StudentService {
     public Student getStudentByYhm(@Param("yhm") String yhm) {
         return studentMapper.getStudentByYhm(yhm);
     }
+
+
+    // 根据xsid查询学生
+    public Student getStudentById(int xsid) {
+        return studentMapper.getStudentById(xsid);
+    }
+
+    // 更改学生信息
+    public int updateStudent(Student student) {
+        return studentMapper.updateStudent(student);
+    }
+
+    // 删除学生
+    public int delStudent(int xsid) {
+        return studentMapper.delStudent(xsid);
+    }
+
+    // 添加学生
+    public int addStudent(Student student) {
+        return studentMapper.addStudent(student);
+    }
 }

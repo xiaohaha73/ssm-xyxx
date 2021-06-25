@@ -1,16 +1,12 @@
 package com.controller;
 
-import com.pojo.Banji;
-import com.pojo.Teacher;
-import com.service.AdminService;
-import com.service.BanjiService;
-import com.service.TeacherService;
+import com.pojo.*;
+import com.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.pojo.Admin;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -27,6 +23,10 @@ public class AdminController {
     private TeacherService teacherService;
     @Autowired
     private BanjiService banjiService;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private PfblService pfblService; // 评分比例
 
 
 
@@ -359,6 +359,217 @@ public class AdminController {
 
         return "redirect:/admin/banjilist";
     }
+
+
+    // 添加学生界面 addStuPage
+    @RequestMapping("/addstupage")
+    public String addStuPage (Model model) {
+        // 查询出所有的班级
+        List<Banji> banjis = banjiService.getBanjis();
+        model.addAttribute("banjis",banjis);
+        return "admin/xuesheng/addStudent";
+    }
+
+    // 添加学生接口
+    @PostMapping("/addstudent")
+    public String addStudent(Student student, HttpServletRequest request) {
+        // System.out.println(student);
+        int ret = studentService.addStudent(student);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('添加成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('添加失败');</script>");
+        }
+
+        return "redirect:/admin/studentspage";
+    }
+
+
+    // 学生列表界面 studentList
+    @RequestMapping("/studentspage")
+    public String studentsPage (Model model) {
+        // 查询所有的学生
+        List<Student> students = studentService.getStudents();
+        model.addAttribute("list",students);
+        return "admin/xuesheng/studentsList";
+    }
+
+
+    // 删除学生接口
+    @RequestMapping("delstudent")
+    public String delStudent (HttpServletRequest request) {
+        int xsid = Integer.parseInt(request.getParameter("keyid"));
+        int ret = studentService.delStudent(xsid);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('删除成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('删除失败');</script>");
+        }
+
+        return "redirect:/admin/studentspage";
+
+    }
+
+
+    // 跳转学生编辑界面
+    @RequestMapping("editstupage")
+    public String editStudent (HttpServletRequest request,Model model) {
+        // 查询出所有的班级
+        List<Banji> banjis = banjiService.getBanjis();
+        model.addAttribute("banjis",banjis);
+
+        // 根据id查询这个学生的信息
+        int xsid = Integer.parseInt(request.getParameter("keyid"));
+        Student student = studentService.getStudentById(xsid);
+        model.addAttribute("xsid",student.getXsid());
+        model.addAttribute("yhm",student.getYhm());
+        model.addAttribute("mm",student.getMm());
+        model.addAttribute("xm",student.getXm());
+        model.addAttribute("zy",student.getZy());
+        model.addAttribute("xy",student.getXy());
+        model.addAttribute("nl",student.getNl());
+        model.addAttribute("dh",student.getDh());
+        model.addAttribute("bj",student.getBj());
+
+        return "/admin/xuesheng/editStudent";
+    }
+
+    // 提交修改处理
+    @PostMapping("/editstudent")
+    public String editStu (Student student,HttpServletRequest request) {
+
+        // System.out.println(student);
+        int ret = studentService.updateStudent(student);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('修改成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('修改失败');</script>");
+        }
+
+        return "redirect:/admin/studentspage";
+    }
+
+    // 展示学生的详细信息
+    @RequestMapping("/studentdetail")
+    public String stuDetail (HttpServletRequest request,Model model) {
+        // 根据id查询这个学生的信息
+        int xsid = Integer.parseInt(request.getParameter("keyid"));
+        Student student = studentService.getStudentById(xsid);
+        model.addAttribute("xsid",student.getXsid());
+        model.addAttribute("yhm",student.getYhm());
+        model.addAttribute("mm",student.getMm());
+        model.addAttribute("xm",student.getXm());
+        model.addAttribute("zy",student.getZy());
+        model.addAttribute("xy",student.getXy());
+        model.addAttribute("nl",student.getNl());
+        model.addAttribute("dh",student.getDh());
+        model.addAttribute("bj",student.getBj());
+
+        return "/admin/xuesheng/studentDetail";
+    }
+
+
+
+    // 添加评分比例页面
+    @RequestMapping("/pfblpage")
+    public String pfblPage () {
+        return "/admin/pfbl/addpfbl";
+    }
+
+
+    // 添加评分比例请求
+    @PostMapping("/addpfbl")
+    public String addPfbl (Pfbl pfbl,HttpServletRequest request) {
+        // System.out.println(pfbl);
+        int ret = pfblService.insert(pfbl);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('添加成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('添加失败');</script>");
+        }
+
+        return "redirect:/admin/pfbllist";
+    }
+
+
+    // 评分比例列表
+    @RequestMapping("/pfbllist")
+    public String pfblList (Model model) {
+
+        // 查询所有的评分比例列表
+        List<Pfbl> pfbls = pfblService.listAll();
+        model.addAttribute("list",pfbls);
+
+        return "/admin/pfbl/pfblList";
+    }
+
+
+    // 修改评分比例页面
+    @RequestMapping("/editpfbl")
+    public String editPfbl (HttpServletRequest request,Model model) {
+        // 根据id查询评分标准
+        int pfblid = Integer.parseInt(request.getParameter("keyid"));
+        Pfbl pfbl = pfblService.getById(pfblid);
+        model.addAttribute("ps",pfbl.getPs());
+        model.addAttribute("qm",pfbl.getQm());
+        model.addAttribute("mc",pfbl.getMc());
+        model.addAttribute("pfblid",pfbl.getPfblid());
+
+        return "/admin/pfbl/editpfbl";
+    }
+
+    // 提交修改的请求
+    @PostMapping("/editpfbl")
+    public String updatePfbl (Pfbl pfbl,HttpServletRequest request) {
+        int ret = pfblService.update(pfbl);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('添加成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('添加失败');</script>");
+        }
+
+        return "redirect:/admin/pfbllist";
+    }
+
+
+    // 删除评分标准
+    @RequestMapping("/delpfbl")
+    public String delPfbl (HttpServletRequest request) {
+        int pfblid = Integer.parseInt(request.getParameter("keyid"));
+        int ret = pfblService.delete(pfblid);
+
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('添加成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('添加失败');</script>");
+        }
+
+        return "redirect:/admin/pfbllist";
+
+    }
+
+
+    // 评分详情页面
+    @RequestMapping("/pfbldetail")
+    public String pfblDetail (HttpServletRequest request, Model model) {
+        int pfblid = Integer.parseInt(request.getParameter("keyid"));
+        Pfbl pfbl = pfblService.getById(pfblid);
+        model.addAttribute("ps",pfbl.getPs());
+        model.addAttribute("qm",pfbl.getQm());
+        model.addAttribute("mc",pfbl.getMc());
+        model.addAttribute("pfblid",pfbl.getPfblid());
+
+        return "/admin/pfbl/pfbldetail";
+    }
+
+
+
 
 
 }

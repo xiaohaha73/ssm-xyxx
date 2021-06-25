@@ -11,4 +11,17 @@ public interface StudentMapper {
 
     // 根据yhm查询学生
     Student getStudentByYhm(String yhm);
+
+    // 根据xsid查询学生
+    Student getStudentById(int xsid);
+
+    // 更改学生信息
+    int updateStudent(Student student);
+
+    // 删除学生
+    int delStudent(int xsid);
+
+    // 添加学生
+    int addStudent(Student student);
+
 }

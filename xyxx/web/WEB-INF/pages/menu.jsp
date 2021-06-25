@@ -104,14 +104,14 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/xuesheng/addpage">
+                    <a href="<%=request.getContextPath()%>/admin/addstupage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加学生</a>
 
                     <b class="arrow"></b>							</li>
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/xuesheng/listpage">
+                    <a href="<%=request.getContextPath()%>/admin/studentspage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         学生列表</a>
 
@@ -130,13 +130,13 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/pfbl/addpage">
+                    <a href="<%=request.getContextPath()%>/admin/pfblpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加评分比例</a>
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/pfbl/listpage">
+                    <a href="<%=request.getContextPath()%>/admin/pfbllist">
                         <i class="menu-icon fa fa-caret-right"></i>
                         评分比例列表</a>
 

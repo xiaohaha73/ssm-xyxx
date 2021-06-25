@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2021/6/19
-  Time: 22:29
+  Date: 2021/6/25
+  Time: 20:59
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,9 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <jsp:include page="../../topcss.jsp"/>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>班级列表</title>
-</head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 
 <body class="no-skin">
 <!-- #section:basics/navbar.layout -->
@@ -35,7 +33,7 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    班级信息列表页面					</li>
+                    评分比例信息列表页面					</li>
 
             </ul><!-- /.breadcrumb -->
 
@@ -49,17 +47,15 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <form name="form" method="post" action="<%=request.getContextPath()%>/admin/banjilist">
-
-                            班级<input type="text" name="bj" value="">
-
-                            <input type="submit" value="查询" class="btn btn-info">
+                        <form name="form" method="post" action="<%=request.getContextPath()%>/pfbl/listpage">
                             <table id="table1" class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>序号</th>
+                                    <th ><strong>名称</strong></th>
+                                    <th ><strong>平时</strong></th>
 
-                                    <th ><strong>班级</strong></th>
+                                    <th ><strong>期末</strong></th>
                                     <th  class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
@@ -68,11 +64,14 @@
                                 <c:forEach items="${list}" var="mymap" varStatus="status">
                                     <tr>
                                         <td   height="28" >${status.count}</td>
-                                        <td>${mymap.bj}</td>
+                                        <td>${mymap.mc}</td>
+                                        <td>${mymap.ps}</td>
+
+                                        <td>${mymap.qm}</td>
 
 
-                                        <td><div class="hidden-sm hidden-xs btn-group"><a href="<%= request.getContextPath()%>/admin/delbanji?keyid=${mymap.bjid}"  onClick="javascript:if(confirm('是否删除')){return true;} else{return false;}" class="btn btn-xs btn-danger">删除</a>
-                                            <a href="<%= request.getContextPath()%>/admin/editbanji?keyid=${mymap.bjid}"  class="btn btn-xs btn-success"  >修改</a><a href="<%= request.getContextPath()%>/admin/banjidetail?keyid=${mymap.bjid}"    class="btn btn-xs btn-info" >详情</a></div></td>
+                                        <td><div class="hidden-sm hidden-xs btn-group"><a href="<%= request.getContextPath()%>/admin/delpfbl?keyid=${mymap.pfblid}"  onClick="javascript:if(confirm('是否删除')){return true;} else{return false;}" class="btn btn-xs btn-danger">删除</a>
+                                            <a href="<%= request.getContextPath()%>/admin/editpfbl?keyid=${mymap.pfblid}"  class="btn btn-xs btn-success"  >修改</a><a href="<%= request.getContextPath()%>/admin/pfbldetail?keyid=${mymap.pfblid}"    class="btn btn-xs btn-info" >详情</a></div></td>
                                     </tr>
 
                                 </c:forEach>
@@ -89,6 +88,6 @@
     </div><!-- /.main-content -->
     <jsp:include page="../../footer.jsp"/>
     ${msg}
-
 </body>
 </html>
+
