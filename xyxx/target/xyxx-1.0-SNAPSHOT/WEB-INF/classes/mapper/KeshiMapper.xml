@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.KeshiMapper">
+	<resultMap id="BaseResultMap" type="com.pojo.Keshi">
+            <result column="ks" property="ks" />
+	        <result column="ksid" property="ksid" />
+		</resultMap>  
+    
+    <!-- 表字段 -->
+    <sql id="baseColumns">
+         t.ks
+        , t.ksid
+        </sql> 
+    
+    <!-- 查询全部 -->
+    <select id="listAll" resultMap="BaseResultMap">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM keshi t
+	</select>
+ 
+ 	<!-- 根据主键获取单条记录 -->
+    <select id="getById" resultMap="BaseResultMap" parameterType="Integer">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM keshi t
+		WHERE ksid = #{ksid}
+	</select>
+
+	<!-- 插入全部字段 -->
+    <insert id="insert" parameterType="com.pojo.Keshi"
+		keyProperty="ksid" keyColumn="ksid" useGeneratedKeys="true"
+    >
+	INSERT INTO keshi
+    <trim prefix="(" suffix=")" suffixOverrides=",">	 
+        	    	ks,
+    	        	        </trim>
+    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+        	        #{ks},                   
+    	        	        </trim>
+	</insert>
+    
+    <!-- 插入不为NULL的字段 -->
+    <insert id="insertIgnoreNull" parameterType="com.pojo.Keshi"
+        keyProperty="ksid" keyColumn="ksid" useGeneratedKeys="true"
+        >
+        INSERT INTO keshi    
+        <trim prefix="(" suffix=")" suffixOverrides=",">	 
+
+                                                <if test="ks != null">
+                   ks,
+                    </if>
+                                                                </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+                                                <if test="ks != null" >
+                    #{ks},                    
+                    </if>
+                                                                </trim>
+    </insert>
+
+	<!-- 更新,更新全部字段 -->
+    <update id="update" parameterType="com.pojo.Keshi">
+    UPDATE keshi
+     <set>		
+                       ks=#{ks},        
+                                 </set>	
+    WHERE ksid = #{ksid}
+    </update>  
+    
+    
+    <!-- 更新不为NULL的字段 -->
+    <update id="updateIgnoreNull" parameterType="com.pojo.Keshi">
+    UPDATE keshi
+    <set>
+    	                            <if test="ks != null" >
+                ks=#{ks},                 
+                </if>
+                                            </set>
+    WHERE ksid = #{ksid}
+    </update>
+
+		
+	<!-- 根据主键删除记录 -->
+	<delete id="delete" parameterType="int">
+		delete from keshi
+		WHERE ksid = #{ksid}
+	</delete>
+
+
+</mapper>

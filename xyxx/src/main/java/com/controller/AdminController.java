@@ -27,6 +27,14 @@ public class AdminController {
     private StudentService studentService;
     @Autowired
     private PfblService pfblService; // 评分比例
+    @Autowired
+    private KechengService kechengService; // 课程
+    @Autowired
+    private XqService xqService; // 学期
+    @Autowired
+    private KeshiService keshiService; // 课时
+    @Autowired
+    private SksjService sksjService; // 上课时间
 
 
 
@@ -570,6 +578,211 @@ public class AdminController {
 
 
 
+    // 添加课程页面
+    @RequestMapping("/addkepage")
+    public String addKePage(Model model) {
+        // 查询出所有的评分比例
+        List<Pfbl> pfbls = pfblService.listAll();
+        model.addAttribute("pfbls",pfbls);
+        return "/admin/kecheng/kechengadd";
+    }
+
+    // 添加课程接口
+    @RequestMapping("/addkecheng")
+    public String addKe (Kecheng kecheng,HttpServletRequest request) {
+//        System.out.println(kecheng);
+        int ret = kechengService.insert(kecheng);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('添加成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('添加失败');</script>");
+        }
+        return "redirect:/admin/kelistpage";
+    }
+
+
+
+    // 展示所有课程列表的页面
+    @RequestMapping("/kelistpage")
+    public String keListPage (Model model) {
+
+        // 查询所有的课程
+        List<Kecheng> kechengs = kechengService.listAll();
+        model.addAttribute("list",kechengs);
+        return "/admin/kecheng/kechenglist";
+    }
+
+
+    // 课程删除接口
+    @RequestMapping("delke")
+    public String delKe (HttpServletRequest request) {
+        int keyid = Integer.parseInt(request.getParameter("keyid"));
+        int ret = kechengService.delete(keyid);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('删除成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('删除失败');</script>");
+        }
+        return "redirect:/admin/kelistpage";
+    }
+
+
+    // 课程编辑界面的展示
+    @RequestMapping("/editke")
+    public String editKe (HttpServletRequest request, Model model) {
+        // 根据id查询出课程
+        int keyid = Integer.parseInt(request.getParameter("keyid"));
+        Kecheng kecheng = kechengService.getById(keyid);
+        model.addAttribute("kcid",kecheng.getKcid());
+        model.addAttribute("kcmc",kecheng.getKcmc());
+        model.addAttribute("js",kecheng.getJs());
+        model.addAttribute("fbjs",kecheng.getFbjs());
+        model.addAttribute("bl",kecheng.getBl());
+
+        // 查询出评分比例
+        List<Pfbl> pfbls = pfblService.listAll();
+        model.addAttribute("pfbls",pfbls);
+
+        return "/admin/kecheng/kechengedit";
+    }
+
+    // 修改课程接口
+    @PostMapping("/editke")
+    public String editKecheng (Kecheng kecheng,HttpServletRequest request) {
+        int ret = kechengService.update(kecheng);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('更新成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('更新失败');</script>");
+        }
+        return "redirect:/admin/kelistpage";
+    }
+
+
+    // 课程详情页面
+    @RequestMapping("kedetail")
+    public String keDetail (HttpServletRequest request, Model model) {
+        // 根据id查询出课程
+        int keyid = Integer.parseInt(request.getParameter("keyid"));
+        Kecheng kecheng = kechengService.getById(keyid);
+        model.addAttribute("kcid",kecheng.getKcid());
+        model.addAttribute("kcmc",kecheng.getKcmc());
+        model.addAttribute("js",kecheng.getJs());
+        model.addAttribute("fbjs",kecheng.getFbjs());
+        model.addAttribute("bl",kecheng.getBl());
+        return "/admin/kecheng/kechengdetail";
+    }
+
+
+
+    // 添加上课时间界面
+    @RequestMapping("/addtimepage")
+    public String addTimePage (Model model) {
+        // 查询所有的课程
+        List<Kecheng> kechengs = kechengService.listAll();
+        model.addAttribute("kelist",kechengs);
+        // 查找所有的学时
+        List<Keshi> keshis = keshiService.listAll();
+        model.addAttribute("keshiList",keshis);
+        // 查找所有星期
+        List<Xq> xqs = xqService.listAll();
+        model.addAttribute("xqList",xqs);
+        return "/admin/sksj/timeadd";
+    }
+
+    // 添加上课时间的接口
+    @PostMapping("/addtime")
+    public String addTime (Sksj sksj, HttpServletRequest request) {
+//        System.out.println(sksj);
+        int ret = sksjService.insert(sksj);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('更新成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('更新失败');</script>");
+        }
+        return "redirect:/admin/timePage";
+    }
+
+
+    // 上课时间列表界面
+    @RequestMapping("/timePage")
+    public String timePage (Model model) {
+
+        // 查询上课时间
+        List<Sksj> list = sksjService.listAll();
+        model.addAttribute("list",list);
+        return "/admin/sksj/timelist";
+    }
+
+    // 删除上课时间
+    @RequestMapping("/deltime")
+    public String delTime (HttpServletRequest request) {
+        int sksjid = Integer.parseInt(request.getParameter("keyid"));
+        int ret = sksjService.delete(sksjid);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('删除成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('删除失败');</script>");
+        }
+        return "redirect:/admin/timePage";
+    }
+
+
+    // 编辑上课时间页面
+    @RequestMapping("/modtimepage")
+    public String editTime (HttpServletRequest request, Model model) {
+
+        int sksjid = Integer.parseInt(request.getParameter("keyid"));
+        // 查询出上课时间
+        Sksj sksj = sksjService.getById(sksjid);
+        model.addAttribute("sksjid",sksjid);
+        model.addAttribute("kc",sksj.getKc());
+        model.addAttribute("xq",sksj.getXq());
+        model.addAttribute("j",sksj.getJ());
+
+        // 查询所有的课程
+        List<Kecheng> kechengs = kechengService.listAll();
+        model.addAttribute("kelist",kechengs);
+        // 查找所有的学时
+        List<Keshi> keshis = keshiService.listAll();
+        model.addAttribute("keshiList",keshis);
+        // 查找所有星期
+        List<Xq> xqs = xqService.listAll();
+        model.addAttribute("xqList",xqs);
+
+        return "/admin/sksj/timeedit";
+    }
+
+    // 编辑上课时间接口
+    @PostMapping("/modtime")
+    public String modTime (Sksj sksj,HttpServletRequest request) {
+
+        int ret = sksjService.insert(sksj);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('编辑成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('编辑失败');</script>");
+        }
+        return "redirect:/admin/timePage";
+    }
+
+    // 上课时间详情页面
+    @RequestMapping("/detailtime")
+    public String detailTime (HttpServletRequest request,Model model) {
+        int sksjid = Integer.parseInt(request.getParameter("keyid"));
+        Sksj sksj = sksjService.getById(sksjid);
+        model.addAttribute("sksjid",sksjid);
+        model.addAttribute("kc",sksj.getKc());
+        model.addAttribute("xq",sksj.getXq());
+        model.addAttribute("j",sksj.getJ());
+        return "/admin/sksj/detail";
+    }
 
 
 }

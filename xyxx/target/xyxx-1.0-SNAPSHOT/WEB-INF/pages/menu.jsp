@@ -155,31 +155,31 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/kecheng/addpage">
+                    <a href="<%=request.getContextPath()%>/admin/addkepage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加课程</a>
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/kecheng/listpage">
+                    <a href="<%=request.getContextPath()%>/admin/kelistpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         课程列表</a>
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/sksj/addpage">
+                    <a href="<%=request.getContextPath()%>/admin/addtimepage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加上课时间</a>
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/sksj/listpage">
+                    <a href="<%=request.getContextPath()%>/admin/timePage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         上课时间列表</a>
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/kecheng/list">
+                    <a href="<%=request.getContextPath()%>/admin/kelistpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         课程浏览</a>
                     <b class="arrow"></b>							</li>
