@@ -10,6 +10,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>管理员详情</title>
     <jsp:include page="../topcss.jsp"/>
 </head>
 

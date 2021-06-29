@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.KcbMapper">
+	<resultMap id="BaseResultMap" type="com.pojo.Kcb">
+            <result column="kc" property="kc" />
+	        <result column="kcbid" property="kcbid" />
+	        <result column="ks" property="ks" />
+	        <result column="skdd" property="skdd" />
+	        <result column="sksj" property="sksj" />
+	        <result column="sm" property="sm" />
+		</resultMap>  
+    
+    <!-- 表字段 -->
+    <sql id="baseColumns">
+         t.kc
+        , t.kcbid
+        , t.ks
+        , t.skdd
+        , t.sksj
+        , t.sm
+        </sql> 
+    
+    <!-- 查询全部 -->
+    <select id="listAll" resultMap="BaseResultMap">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM kcb t
+	</select>
+ 
+ 	<!-- 根据主键获取单条记录 -->
+    <select id="getById" resultMap="BaseResultMap" parameterType="Integer">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM kcb t
+		WHERE kcbid = #{kcbid}
+	</select>
+
+	<!-- 插入全部字段 -->
+    <insert id="insert" parameterType="com.pojo.Kcb"
+		keyProperty="kcbid" keyColumn="kcbid" useGeneratedKeys="true"
+    >
+	INSERT INTO kcb
+    <trim prefix="(" suffix=")" suffixOverrides=",">	 
+        	    	kc,
+    	        	        	    	ks,
+    	        	    	skdd,
+    	        	    	sksj,
+    	        	    	sm,
+    	        </trim>
+    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+        	        #{kc},                   
+    	        	        	        #{ks},                   
+    	        	        #{skdd},                   
+    	        	        #{sksj},                   
+    	        	        #{sm},                   
+    	        </trim>
+	</insert>
+    
+    <!-- 插入不为NULL的字段 -->
+    <insert id="insertIgnoreNull" parameterType="com.pojo.Kcb"
+        keyProperty="kcbid" keyColumn="kcbid" useGeneratedKeys="true"
+        >
+        INSERT INTO kcb    
+        <trim prefix="(" suffix=")" suffixOverrides=",">	 
+
+                                                <if test="kc != null">
+                   kc,
+                    </if>
+                                                                                            <if test="ks != null">
+                   ks,
+                    </if>
+                                                                <if test="skdd != null">
+                   skdd,
+                    </if>
+                                                                <if test="sksj != null">
+                   sksj,
+                    </if>
+                                                                <if test="sm != null">
+                   sm,
+                    </if>
+                                    </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+                                                <if test="kc != null" >
+                    #{kc},                    
+                    </if>
+                                                                                            <if test="ks != null" >
+                    #{ks},                    
+                    </if>
+                                                                <if test="skdd != null" >
+                    #{skdd},                    
+                    </if>
+                                                                <if test="sksj != null" >
+                    #{sksj},                    
+                    </if>
+                                                                <if test="sm != null" >
+                    #{sm},                    
+                    </if>
+                                    </trim>
+    </insert>
+
+	<!-- 更新,更新全部字段 -->
+    <update id="update" parameterType="com.pojo.Kcb">
+    UPDATE kcb
+     <set>		
+                       kc=#{kc},        
+                                              ks=#{ks},        
+                                skdd=#{skdd},        
+                                sksj=#{sksj},        
+                                sm=#{sm},        
+                   </set>	
+    WHERE kcbid = #{kcbid}
+    </update>  
+    
+    
+    <!-- 更新不为NULL的字段 -->
+    <update id="updateIgnoreNull" parameterType="com.pojo.Kcb">
+    UPDATE kcb
+    <set>
+    	                            <if test="kc != null" >
+                kc=#{kc},                 
+                </if>
+                                                                    <if test="ks != null" >
+                ks=#{ks},                 
+                </if>
+                                                <if test="skdd != null" >
+                skdd=#{skdd},                 
+                </if>
+                                                <if test="sksj != null" >
+                sksj=#{sksj},                 
+                </if>
+                                                <if test="sm != null" >
+                sm=#{sm},                 
+                </if>
+                        </set>
+    WHERE kcbid = #{kcbid}
+    </update>
+
+		
+	<!-- 根据主键删除记录 -->
+	<delete id="delete" parameterType="int">
+		delete from kcb
+		WHERE kcbid = #{kcbid}
+	</delete>
+
+
+</mapper>

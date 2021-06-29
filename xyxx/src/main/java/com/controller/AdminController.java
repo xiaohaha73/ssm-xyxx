@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -35,7 +36,8 @@ public class AdminController {
     private KeshiService keshiService; // 课时
     @Autowired
     private SksjService sksjService; // 上课时间
-
+    @Autowired
+    private KcbService kcbService; // 课程表
 
 
     // 加载管理员首页
@@ -176,7 +178,7 @@ public class AdminController {
         model.addAttribute("xm", xm);
         model.addAttribute("glyid", glyid);
 
-        return "admin/glydetail";
+        return "/admin/glydetail";
     }
 
 
@@ -782,6 +784,136 @@ public class AdminController {
         model.addAttribute("xq",sksj.getXq());
         model.addAttribute("j",sksj.getJ());
         return "/admin/sksj/detail";
+    }
+
+
+    // 添加课程表
+    @RequestMapping("/kcbaddpage")
+    public String kcbaddPage (Model model) {
+        // 获取所有的课程名称
+        List<Kecheng> kechengList = kechengService.listAll();
+        model.addAttribute("keList",kechengList);
+
+        // 获取所有的课程时间
+        List<Keshi> keshiList = keshiService.listAll();
+        model.addAttribute("keshiList",keshiList);
+        return "/admin/kcb/kcbadd";
+    }
+
+
+    // 添加课程表操作
+    @PostMapping("/addkcb")
+    public String addKcb (HttpServletRequest request,Kcb kcb) {
+        int ret = kcbService.insert(kcb);
+        if (ret > 0) {
+            // 添加成功
+            request.setAttribute("msg", "<script>alert('添加成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('添加失败');</script>");
+        }
+        return "redirect:/admin/kcblistpage";
+    }
+
+
+    // 课程表列表页面
+    @RequestMapping("/kcblistpage")
+    public String kcblistPage (Model model) {
+
+        List<Kcb> kcbs = kcbService.listAll();
+        model.addAttribute("list",kcbs);
+
+        return "/admin/kcb/kcblist";
+    }
+
+
+    // 删除课程表列表操作
+    @RequestMapping("/delkcb")
+    public String delKcb (HttpServletRequest request) {
+        int kcbid = Integer.parseInt(request.getParameter("keyid"));
+        int ret = kcbService.delete(kcbid);
+        if (ret > 0) {
+            // 删除成功
+            request.setAttribute("msg", "<script>alert('删除成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('删除失败');</script>");
+        }
+
+        return "redirect:/admin/kcblistpage";
+    }
+
+
+    // 课程表编辑界面
+    @RequestMapping("/editkcb")
+    public String editKcbPage (Model model,HttpServletRequest request) {
+
+        // 获取所有的课程名称
+        List<Kecheng> kechengList = kechengService.listAll();
+        model.addAttribute("keList",kechengList);
+
+        // 获取所有的课程时间
+        List<Keshi> keshiList = keshiService.listAll();
+        model.addAttribute("keshiList",keshiList);
+
+        // 根据id获取课程表信息
+        int kcbid = Integer.parseInt(request.getParameter("keyid"));
+        Kcb kcb = kcbService.getById(kcbid);
+        model.addAttribute("kcbid",kcb.getKcbid());
+        model.addAttribute("kc",kcb.getKc());
+        model.addAttribute("skdd",kcb.getSkdd());
+        model.addAttribute("sksj",kcb.getSksj());
+        model.addAttribute("sm",kcb.getSm());
+        model.addAttribute("ks",kcb.getKs());
+        return "/admin/kcb/kcbedit";
+    }
+
+
+    // 提交修改请求
+    @PostMapping("/editkcb")
+    public String editKcb (Kcb kcb,HttpServletRequest request) {
+        int ret = kcbService.update(kcb);
+        if (ret > 0) {
+            // 修改成功
+            request.setAttribute("msg", "<script>alert('修改成功');</script>");
+        }else {
+            request.setAttribute("msg", "<script>alert('修改失败');</script>");
+        }
+        return "redirect:/admin/kcblistpage";
+    }
+
+
+    // 展示课程表详情
+    @RequestMapping("/kcbdetail")
+    public String kcbDetail (HttpServletRequest request,Model model) {
+        int kcbid = Integer.parseInt(request.getParameter("keyid"));
+        Kcb kcb = kcbService.getById(kcbid);
+        model.addAttribute("kcbid",kcb.getKcbid());
+        model.addAttribute("kc",kcb.getKc());
+        model.addAttribute("skdd",kcb.getSkdd());
+        model.addAttribute("sksj",kcb.getSksj());
+        model.addAttribute("sm",kcb.getSm());
+        model.addAttribute("ks",kcb.getKs());
+        return "/admin/kcb/kcbdetail";
+    }
+
+
+    // 当前管理员的信息
+    @RequestMapping("/userinfo")
+    public String userInfo (HttpServletRequest request,Model model) {
+        // 获取当前管理员的id
+        Object glyid =  request.getSession().getAttribute("user_id");
+        // System.out.println(glyid);
+
+        Admin admin = adminService.getAdminById((Integer) glyid);
+
+        String yhm = admin.getYhm();
+        String mm = admin.getMm();
+        String xm = admin.getXm();
+        model.addAttribute("yhm", yhm);
+        model.addAttribute("mm", mm);
+        model.addAttribute("xm", xm);
+        model.addAttribute("glyid", glyid);
+
+         return "/admin/glydetail";
     }
 
 

@@ -56,6 +56,7 @@ public class LoginController {
                     // 创建session
                     HttpSession session = req.getSession();
                     session.setAttribute("user",username); // 存入用户名
+                    session.setAttribute("user_id",student.getXsid());
                     session.setAttribute("role","student"); // 存入角色值role用于判断
                     return "redirect:/student/index";
                 }
@@ -78,6 +79,7 @@ public class LoginController {
                     // 创建session
                     HttpSession session = req.getSession();
                     session.setAttribute("user",username); // 存入用户名
+                    session.setAttribute("user_id",teacher.getJsid());
                     session.setAttribute("role","teacher"); // 存入角色值role用于判断
                     return "redirect:/teacher/index";
                 }
@@ -99,6 +101,7 @@ public class LoginController {
                     // 创建session
                     HttpSession session = req.getSession();
                     session.setAttribute("user",username); // 存入用户名
+                    session.setAttribute("user_id",admin.getGlyid());
                     session.setAttribute("role","admin"); // 存入角色值role用于判断
                     return "redirect:/admin/index";
                 }

@@ -193,21 +193,16 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/kcb/addpage">
+                    <a href="<%=request.getContextPath()%>/admin/kcbaddpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加课程表</a>
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/kcb/listpage">
+                    <a href="<%=request.getContextPath()%>/admin/kcblistpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         课程表列表</a>
 
-                    <b class="arrow"></b>							</li>
-                <li class="active">
-                    <a href="<%=request.getContextPath()%>/kcb/list">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        课程表浏览</a>
                     <b class="arrow"></b>							</li>
             </ul>
         </li>
@@ -219,7 +214,7 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/gly/modify">
+                    <a href="<%=request.getContextPath()%>/admin/userinfo">
                         <i class="menu-icon fa fa-caret-right"></i>
                         个人信息</a>
                     <b class="arrow"></b></li>
