@@ -199,7 +199,7 @@
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/admin/kcblistpage">
+                    <a href="<%=request.getContextPath()%>/common/kcblistpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         课程表列表</a>
 

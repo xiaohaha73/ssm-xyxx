@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.XuankeMapper">
+	<resultMap id="BaseResultMap" type="com.pojo.Xuanke">
+            <result column="kc" property="kc" />
+	        <result column="xkid" property="xkid" />
+	        <result column="xksj" property="xksj" />
+	        <result column="xs" property="xs" />
+	        <result column="zt" property="zt" />
+		</resultMap>  
+    
+    <!-- 表字段 -->
+    <sql id="baseColumns">
+         t.kc
+        , t.xkid
+        , t.xksj
+        , t.xs
+        , t.zt
+        </sql> 
+    
+    <!-- 查询全部 -->
+    <select id="listAll" resultMap="BaseResultMap">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM xuanke t
+	</select>
+ 
+ 	<!-- 根据主键获取单条记录 -->
+    <select id="getById" resultMap="BaseResultMap" parameterType="Integer">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM xuanke t
+		WHERE xkid = #{xkid}
+	</select>
+
+	<!-- 插入全部字段 -->
+    <insert id="insert" parameterType="com.pojo.Xuanke"
+		keyProperty="xkid" keyColumn="xkid" useGeneratedKeys="true"
+    >
+	INSERT INTO xuanke
+    <trim prefix="(" suffix=")" suffixOverrides=",">	 
+        	    	kc,
+    	        	        	    	xksj,
+    	        	    	xs,
+    	        	    	zt,
+    	        </trim>
+    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+        	        #{kc},                   
+    	        	        	        #{xksj},                   
+    	        	        #{xs},                   
+    	        	        #{zt},                   
+    	        </trim>
+	</insert>
+    
+    <!-- 插入不为NULL的字段 -->
+    <insert id="insertIgnoreNull" parameterType="com.pojo.Xuanke"
+        keyProperty="xkid" keyColumn="xkid" useGeneratedKeys="true"
+        >
+        INSERT INTO xuanke    
+        <trim prefix="(" suffix=")" suffixOverrides=",">	 
+
+                                                <if test="kc != null">
+                   kc,
+                    </if>
+                                                                                            <if test="xksj != null">
+                   xksj,
+                    </if>
+                                                                <if test="xs != null">
+                   xs,
+                    </if>
+                                                                <if test="zt != null">
+                   zt,
+                    </if>
+                                    </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+                                                <if test="kc != null" >
+                    #{kc},                    
+                    </if>
+                                                                                            <if test="xksj != null" >
+                    #{xksj},                    
+                    </if>
+                                                                <if test="xs != null" >
+                    #{xs},                    
+                    </if>
+                                                                <if test="zt != null" >
+                    #{zt},                    
+                    </if>
+                                    </trim>
+    </insert>
+
+	<!-- 更新,更新全部字段 -->
+    <update id="update" parameterType="com.pojo.Xuanke">
+    UPDATE xuanke
+     <set>		
+                       kc=#{kc},        
+                                              xksj=#{xksj},        
+                                xs=#{xs},        
+                                zt=#{zt},        
+                   </set>	
+    WHERE xkid = #{xkid}
+    </update>  
+    
+    
+    <!-- 更新不为NULL的字段 -->
+    <update id="updateIgnoreNull" parameterType="com.pojo.Xuanke">
+    UPDATE xuanke
+    <set>
+    	                            <if test="kc != null" >
+                kc=#{kc},                 
+                </if>
+                                                                    <if test="xksj != null" >
+                xksj=#{xksj},                 
+                </if>
+                                                <if test="xs != null" >
+                xs=#{xs},                 
+                </if>
+                                                <if test="zt != null" >
+                zt=#{zt},                 
+                </if>
+                        </set>
+    WHERE xkid = #{xkid}
+    </update>
+
+		
+	<!-- 根据主键删除记录 -->
+	<delete id="delete" parameterType="int">
+		delete from xuanke
+		WHERE xkid = #{xkid}
+	</delete>
+
+
+</mapper>

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2021/6/29
-  Time: 10:21
+  Date: 2021/7/1
+  Time: 22:31
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,7 +13,7 @@
     <jsp:include page="../../topcss.jsp"/>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>课程表列表</title>
+    <title>选课列表</title>
 </head>
 
 <body class="no-skin">
@@ -27,7 +27,7 @@
 <div class="main-container" id="main-container">
 
     <!-- #section:basics/sidebar -->
-    <jsp:include page="../../menu.jsp"/>
+    <jsp:include page="../menu.jsp"/>
 
     <!-- /section:basics/sidebar -->
     <div class="main-content">
@@ -35,7 +35,7 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    课程表信息列表页面					</li>
+                    选课信息列表页面					</li>
 
             </ul><!-- /.breadcrumb -->
 
@@ -49,11 +49,11 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <form name="form" method="post" action="<%=request.getContextPath()%>/kcb/listpage">
+                        <form name="form" method="post" action="<%=request.getContextPath()%>/xuanke/listpage">
 
                             课程<input type="text" name="kc" value="">
 
-                            上课地点<input type="text" name="skdd" value="">
+                            学生<input type="text" name="xs" value="">
 
                             <input type="submit" value="查询" class="btn btn-info">
                             <table id="table1" class="table table-striped table-bordered table-hover">
@@ -63,11 +63,11 @@
 
                                     <th ><strong>课程</strong></th>
 
-                                    <th ><strong>上课地点</strong></th>
+                                    <th ><strong>学生</strong></th>
 
-                                    <th ><strong>上课时间</strong></th>
-                                    <th ><strong>节</strong></th>
-                                    <th ><strong>说明</strong></th>
+                                    <th ><strong>选课时间</strong></th>
+
+                                    <th ><strong>状态</strong></th>
                                     <th  class="hidden-480">操作</th>
                                 </tr>
                                 </thead>
@@ -78,15 +78,15 @@
                                         <td   height="28" >${status.count}</td>
                                         <td>${mymap.kc}</td>
 
-                                        <td>${mymap.skdd}</td>
+                                        <td>${mymap.xs}</td>
 
-                                        <td>${mymap.sksj}</td>
-                                        <td>${mymap.ks}</td>
-                                        <td>${mymap.sm}</td>
+                                        <td>${mymap.xksj}</td>
+
+                                        <td>${mymap.zt}</td>
 
 
-                                        <td><div class="hidden-sm hidden-xs btn-group"><a href="<%= request.getContextPath()%>/admin/delkcb?keyid=${mymap.kcbid}"  onClick="javascript:if(confirm('是否删除')){return true;} else{return false;}" class="btn btn-xs btn-danger">删除</a>
-                                            <a href="<%= request.getContextPath()%>/admin/editkcb?keyid=${mymap.kcbid}"  class="btn btn-xs btn-success"  >修改</a><a href="<%= request.getContextPath()%>/admin/kcbdetail?keyid=${mymap.kcbid}"    class="btn btn-xs btn-info" >详情</a></div></td>
+                                        <td><div class="hidden-sm hidden-xs btn-group"><a href="<%= request.getContextPath()%>/teacher/delxuanke?keyid=${mymap.xkid}"  onClick="javascript:if(confirm('是否删除')){return true;} else{return false;}" class="btn btn-xs btn-danger">删除</a>
+                                            <a href="<%= request.getContextPath()%>/teacher/editxuanpage?keyid=${mymap.xkid}"  class="btn btn-xs btn-success"  >修改</a><a href="<%= request.getContextPath()%>/teacher/xuankedetail?keyid=${mymap.xkid}"    class="btn btn-xs btn-info" >详情</a></div></td>
                                     </tr>
 
                                 </c:forEach>
@@ -106,4 +106,3 @@
 
 </body>
 </html>
-

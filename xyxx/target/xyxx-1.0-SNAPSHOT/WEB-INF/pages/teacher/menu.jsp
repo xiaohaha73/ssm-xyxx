@@ -18,26 +18,6 @@
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-pencil-square-o"></i>
-                <span class="menu-text"> 课程管理 </span>
-
-                <b class="arrow fa fa-angle-down"></b>						</a>
-
-            <b class="arrow"></b>
-
-            <ul class="submenu">
-
-                <li class="active">
-                    <a href="<%=request.getContextPath()%>/kecheng/list">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        课程浏览</a>
-
-                    <b class="arrow"></b>							</li>
-
-            </ul>
-        </li>
-        <li class="">
-            <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-pencil-square-o"></i>
                 <span class="menu-text"> 课程表管理 </span>
 
                 <b class="arrow fa fa-angle-down"></b>						</a>
@@ -46,7 +26,7 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/kcb/list">
+                    <a href="<%=request.getContextPath()%>/common/kcblistpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         课程表浏览</a>
 
@@ -66,7 +46,7 @@
             <ul class="submenu">
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/xuanke/listpage">
+                    <a href="<%=request.getContextPath()%>/teacher/xuankepage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         选课列表</a>
 

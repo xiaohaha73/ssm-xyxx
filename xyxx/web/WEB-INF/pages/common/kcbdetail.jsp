@@ -10,14 +10,14 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <jsp:include page="../../topcss.jsp"/>
+    <jsp:include page="../topcss.jsp"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>课程表详情</title>
 </head>
 
 <body class="no-skin">
 <!-- #section:basics/navbar.layout -->
-<jsp:include page="../../header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <script language="javascript">
 
 </script>
@@ -25,8 +25,14 @@
 <!-- /section:basics/navbar.layout -->
 <div class="main-container" id="main-container">
 
-    <!-- #section:basics/sidebar -->
-    <jsp:include page="../../menu.jsp"/>
+        <%
+		if(session.getAttribute("role").equals("teacher")){
+	%>
+    <jsp:include page="../teacher/menu.jsp"/>
+        <% }else {%>
+    <jsp:include page="../menu.jsp"/>
+
+        <%}%>
 
     <!-- /section:basics/sidebar -->
     <div class="main-content">
@@ -97,7 +103,7 @@
             </div><!-- /.page-content-area -->
         </div><!-- /.page-content -->
     </div><!-- /.main-content -->
-    <jsp:include page="../../footer.jsp"/>
+    <jsp:include page="../footer.jsp"/>
 
     ${msg}
 </body>
