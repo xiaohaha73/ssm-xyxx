@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ChengjiMapper">
+	<resultMap id="BaseResultMap" type="com.pojo.Chengji">
+            <result column="cj" property="cj" />
+	        <result column="cjid" property="cjid" />
+	        <result column="djsj" property="djsj" />
+	        <result column="kc" property="kc" />
+	        <result column="lb" property="lb" />
+	        <result column="lx" property="lx" />
+	        <result column="xs" property="xs" />
+		</resultMap>  
+    
+    <!-- 表字段 -->
+    <sql id="baseColumns">
+         t.cj
+        , t.cjid
+        , t.djsj
+        , t.kc
+        , t.lb
+        , t.lx
+        , t.xs
+        </sql> 
+    
+    <!-- 查询全部 -->
+    <select id="listAll" resultMap="BaseResultMap">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM chengji t
+	</select>
+ 
+ 	<!-- 根据主键获取单条记录 -->
+    <select id="getById" resultMap="BaseResultMap" parameterType="Integer">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM chengji t
+		WHERE cjid = #{cjid}
+	</select>
+
+	<!-- 插入全部字段 -->
+    <insert id="insert" parameterType="com.pojo.Chengji"
+		keyProperty="cjid" keyColumn="cjid" useGeneratedKeys="true"
+    >
+	INSERT INTO chengji
+    <trim prefix="(" suffix=")" suffixOverrides=",">	 
+        	    	cj,
+    	        	        	    	djsj,
+    	        	    	kc,
+    	        	    	lb,
+    	        	    	lx,
+    	        	    	xs,
+    	        </trim>
+    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+        	        #{cj},                   
+    	        	        	        #{djsj},                   
+    	        	        #{kc},                   
+    	        	        #{lb},                   
+    	        	        #{lx},                   
+    	        	        #{xs},                   
+    	        </trim>
+	</insert>
+    
+    <!-- 插入不为NULL的字段 -->
+    <insert id="insertIgnoreNull" parameterType="com.pojo.Chengji"
+        keyProperty="cjid" keyColumn="cjid" useGeneratedKeys="true"
+        >
+        INSERT INTO chengji    
+        <trim prefix="(" suffix=")" suffixOverrides=",">	 
+
+                                                <if test="cj != null">
+                   cj,
+                    </if>
+                                                                                            <if test="djsj != null">
+                   djsj,
+                    </if>
+                                                                <if test="kc != null">
+                   kc,
+                    </if>
+                                                                <if test="lb != null">
+                   lb,
+                    </if>
+                                                                <if test="lx != null">
+                   lx,
+                    </if>
+                                                                <if test="xs != null">
+                   xs,
+                    </if>
+                                    </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+                                                <if test="cj != null" >
+                    #{cj},                    
+                    </if>
+                                                                                            <if test="djsj != null" >
+                    #{djsj},                    
+                    </if>
+                                                                <if test="kc != null" >
+                    #{kc},                    
+                    </if>
+                                                                <if test="lb != null" >
+                    #{lb},                    
+                    </if>
+                                                                <if test="lx != null" >
+                    #{lx},                    
+                    </if>
+                                                                <if test="xs != null" >
+                    #{xs},                    
+                    </if>
+                                    </trim>
+    </insert>
+
+	<!-- 更新,更新全部字段 -->
+    <update id="update" parameterType="com.pojo.Chengji">
+    UPDATE chengji
+     <set>		
+                       cj=#{cj},        
+                                              djsj=#{djsj},        
+                                kc=#{kc},        
+                                lb=#{lb},        
+                                lx=#{lx},        
+                                xs=#{xs},        
+                   </set>	
+    WHERE cjid = #{cjid}
+    </update>  
+    
+    
+    <!-- 更新不为NULL的字段 -->
+    <update id="updateIgnoreNull" parameterType="com.pojo.Chengji">
+    UPDATE chengji
+    <set>
+    	                            <if test="cj != null" >
+                cj=#{cj},                 
+                </if>
+                                                                    <if test="djsj != null" >
+                djsj=#{djsj},                 
+                </if>
+                                                <if test="kc != null" >
+                kc=#{kc},                 
+                </if>
+                                                <if test="lb != null" >
+                lb=#{lb},                 
+                </if>
+                                                <if test="lx != null" >
+                lx=#{lx},                 
+                </if>
+                                                <if test="xs != null" >
+                xs=#{xs},                 
+                </if>
+                        </set>
+    WHERE cjid = #{cjid}
+    </update>
+
+		
+	<!-- 根据主键删除记录 -->
+	<delete id="delete" parameterType="int">
+		delete from chengji
+		WHERE cjid = #{cjid}
+	</delete>
+
+
+</mapper>

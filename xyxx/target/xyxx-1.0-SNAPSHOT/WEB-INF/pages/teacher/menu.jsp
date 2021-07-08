@@ -66,7 +66,7 @@
             <ul class="submenu">
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/chengji/addpage">
+                    <a href="<%=request.getContextPath()%>/teacher/addscorepage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加成绩</a>
 
@@ -78,21 +78,21 @@
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/chengji/listpage">
+                    <a href="<%=request.getContextPath()%>/teacher/scorelist">
                         <i class="menu-icon fa fa-caret-right"></i>
                         成绩列表</a>
 
                     <b class="arrow"></b>							</li>
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/zpcj/addpage">
+                    <a href="<%=request.getContextPath()%>/teacher/finalscorepage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加总评成绩</a>
 
                     <b class="arrow"></b>							</li>
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/zpcj/listpage">
+                    <a href="<%=request.getContextPath()%>/teacher/finalscorelist">
                         <i class="menu-icon fa fa-caret-right"></i>
                         总评成绩列表</a>
 

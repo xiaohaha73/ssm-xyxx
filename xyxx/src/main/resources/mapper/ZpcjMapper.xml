@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ZpcjMapper">
+	<resultMap id="BaseResultMap" type="com.pojo.Zpcj">
+            <result column="djsj" property="djsj" />
+	        <result column="kc" property="kc" />
+	        <result column="pscj" property="pscj" />
+	        <result column="qmcj" property="qmcj" />
+	        <result column="xs" property="xs" />
+	        <result column="zcj" property="zcj" />
+	        <result column="zpcjid" property="zpcjid" />
+		</resultMap>  
+    
+    <!-- 表字段 -->
+    <sql id="baseColumns">
+         t.djsj
+        , t.kc
+        , t.pscj
+        , t.qmcj
+        , t.xs
+        , t.zcj
+        , t.zpcjid
+        </sql> 
+    
+    <!-- 查询全部 -->
+    <select id="listAll" resultMap="BaseResultMap">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM zpcj t
+	</select>
+ 
+ 	<!-- 根据主键获取单条记录 -->
+    <select id="getById" resultMap="BaseResultMap" parameterType="Integer">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM zpcj t
+		WHERE zpcjid = #{zpcjid}
+	</select>
+
+	<!-- 插入全部字段 -->
+    <insert id="insert" parameterType="com.pojo.Zpcj"
+		keyProperty="zpcjid" keyColumn="zpcjid" useGeneratedKeys="true"
+    >
+	INSERT INTO zpcj
+    <trim prefix="(" suffix=")" suffixOverrides=",">	 
+        	    	djsj,
+    	        	    	kc,
+    	        	    	pscj,
+    	        	    	qmcj,
+    	        	    	xs,
+    	        	    	zcj,
+    	        	        </trim>
+    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+        	        #{djsj},                   
+    	        	        #{kc},                   
+    	        	        #{pscj},                   
+    	        	        #{qmcj},                   
+    	        	        #{xs},                   
+    	        	        #{zcj},                   
+    	        	        </trim>
+	</insert>
+    
+    <!-- 插入不为NULL的字段 -->
+    <insert id="insertIgnoreNull" parameterType="com.pojo.Zpcj"
+        keyProperty="zpcjid" keyColumn="zpcjid" useGeneratedKeys="true"
+        >
+        INSERT INTO zpcj    
+        <trim prefix="(" suffix=")" suffixOverrides=",">	 
+
+                                                <if test="djsj != null">
+                   djsj,
+                    </if>
+                                                                <if test="kc != null">
+                   kc,
+                    </if>
+                                                                <if test="pscj != null">
+                   pscj,
+                    </if>
+                                                                <if test="qmcj != null">
+                   qmcj,
+                    </if>
+                                                                <if test="xs != null">
+                   xs,
+                    </if>
+                                                                <if test="zcj != null">
+                   zcj,
+                    </if>
+                                                                </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+                                                <if test="djsj != null" >
+                    #{djsj},                    
+                    </if>
+                                                                <if test="kc != null" >
+                    #{kc},                    
+                    </if>
+                                                                <if test="pscj != null" >
+                    #{pscj},                    
+                    </if>
+                                                                <if test="qmcj != null" >
+                    #{qmcj},                    
+                    </if>
+                                                                <if test="xs != null" >
+                    #{xs},                    
+                    </if>
+                                                                <if test="zcj != null" >
+                    #{zcj},                    
+                    </if>
+                                                                </trim>
+    </insert>
+
+	<!-- 更新,更新全部字段 -->
+    <update id="update" parameterType="com.pojo.Zpcj">
+    UPDATE zpcj
+     <set>		
+                       djsj=#{djsj},        
+                                kc=#{kc},        
+                                pscj=#{pscj},        
+                                qmcj=#{qmcj},        
+                                xs=#{xs},        
+                                zcj=#{zcj},        
+                                 </set>	
+    WHERE zpcjid = #{zpcjid}
+    </update>  
+    
+    
+    <!-- 更新不为NULL的字段 -->
+    <update id="updateIgnoreNull" parameterType="com.pojo.Zpcj">
+    UPDATE zpcj
+    <set>
+    	                            <if test="djsj != null" >
+                djsj=#{djsj},                 
+                </if>
+                                                <if test="kc != null" >
+                kc=#{kc},                 
+                </if>
+                                                <if test="pscj != null" >
+                pscj=#{pscj},                 
+                </if>
+                                                <if test="qmcj != null" >
+                qmcj=#{qmcj},                 
+                </if>
+                                                <if test="xs != null" >
+                xs=#{xs},                 
+                </if>
+                                                <if test="zcj != null" >
+                zcj=#{zcj},                 
+                </if>
+                                            </set>
+    WHERE zpcjid = #{zpcjid}
+    </update>
+
+		
+	<!-- 根据主键删除记录 -->
+	<delete id="delete" parameterType="int">
+		delete from zpcj
+		WHERE zpcjid = #{zpcjid}
+	</delete>
+
+
+</mapper>
