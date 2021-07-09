@@ -1,16 +1,26 @@
 package com.controller;
 
+import com.alibaba.excel.EasyExcel;
 import com.pojo.*;
 import com.service.*;
+import com.utils.ExcelDataUpload;
 import com.utils.StaticMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ClassUtils;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 // 教师模块控制器
@@ -341,6 +351,30 @@ public class TeacherController {
         model.addAttribute("djsj",zpcj.getDjsj());
 
         return "/teacher/zpcj/zpcjdetail";
+    }
+
+
+    // 成绩表格导入界面
+    @RequestMapping("/uploadpage")
+    public String uploadPage () {
+
+        return "/teacher/chengji/uploadscore";
+    }
+
+
+    // 成绩表格导入的接口
+    @PostMapping("/uploadscore")
+    public String uploadScoreChart (MultipartFile uploadFile, HttpServletRequest request) throws IOException {
+        Date dNow = new Date( );
+        SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMddhhmmss-"); // 加个时间防止文件名重复
+        String originalFilename =ft.format(dNow) + uploadFile.getOriginalFilename();
+        // System.out.println(originalFilename);
+         String path = request.getServletContext().getRealPath("/upload") + "\\" + originalFilename;
+        // 将图片移动到这里面
+        uploadFile.transferTo(new File(path));
+        // 调用easyExcel实现excel的上传
+        EasyExcel.read(path, Chengji.class, new ExcelDataUpload(chengjiService)).sheet().doRead();
+         return "redirect:/teacher/finalscorelist";
     }
 
 

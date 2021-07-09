@@ -104,14 +104,14 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/admin/addstupage">
+                    <a href="<%=request.getContextPath()%>/common/addstupage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         添加学生</a>
 
                     <b class="arrow"></b>							</li>
 
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/admin/studentspage">
+                    <a href="<%=request.getContextPath()%>/common/studentspage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         学生列表</a>
 

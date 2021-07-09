@@ -72,7 +72,7 @@
 
                     <b class="arrow"></b>							</li>
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/chengji/daoru.jsp">
+                    <a href="<%=request.getContextPath()%>/teacher/uploadpage">
                         <i class="menu-icon fa fa-caret-right"></i>
                         成绩导入</a>
 
@@ -101,6 +101,33 @@
 
             </ul>
         </li>
+
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-pencil-square-o"></i>
+                <span class="menu-text"> 学生管理 </span>
+
+                <b class="arrow fa fa-angle-down"></b>						</a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="active">
+                    <a href="<%=request.getContextPath()%>/common/addstupage">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        添加学生</a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="active">
+                    <a href="<%=request.getContextPath()%>/common/studentspage">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        学生列表</a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-pencil-square-o"></i>

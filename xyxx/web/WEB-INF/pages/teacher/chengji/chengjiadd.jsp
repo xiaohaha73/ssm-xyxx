@@ -128,6 +128,9 @@
 
                                     </td>
 
+                                </tr>
+
+                                <tr>
                                     <td align="right" valign="middle">	<label class="control-label no-padding-right"> 类型：</label></td>
 
                                     <td>
@@ -138,9 +141,8 @@
                                         </select>(期末成绩只能添加一次)
 
                                     </td>
-
-
                                 </tr>
+
                                 <tr>
 
                                     <td align="right" valign="middle">	<label class="control-label no-padding-right"> 成绩：</label></td>
