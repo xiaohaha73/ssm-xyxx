@@ -139,7 +139,7 @@
 
             <ul class="submenu">
                 <li class="active">
-                    <a href="<%=request.getContextPath()%>/tongji/banjilist.jsp">
+                    <a href="<%=request.getContextPath()%>/teacher/banjilist">
                         <i class="menu-icon fa fa-caret-right"></i>
                         班级查看</a>
 

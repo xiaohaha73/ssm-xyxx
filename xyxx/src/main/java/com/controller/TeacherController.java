@@ -38,6 +38,10 @@ public class TeacherController {
     private ChengjiService chengjiService;
     @Autowired
     private ZpcjService zpcjService;
+    @Autowired
+    private BanjiService banjiService;
+
+
 
     @RequestMapping("/index")
     public String index() {
@@ -377,6 +381,25 @@ public class TeacherController {
          return "redirect:/teacher/finalscorelist";
     }
 
+
+    // 班级查看页面
+    @RequestMapping("/banjilist")
+    public String banjiList (Model model) {
+
+        // 查询出所有的班级信息
+        List<Banji> banjis = banjiService.getBanjis();
+        model.addAttribute("list",banjis);
+        return "/teacher/tongji/banjilist";
+    }
+
+
+    // 平均成绩界面
+    @RequestMapping("/avgscorepage")
+    public String avgscorePage (Model model) {
+
+         return "/";
+
+    }
 
 
 }
